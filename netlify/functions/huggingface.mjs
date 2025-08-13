@@ -1,11 +1,14 @@
 import fetch from "node-fetch";
 
 export async function handler(event) {
+
+  // Access to XMLHttpRequest at 'https://peaceful-tanuki-e80ae4.netlify.app/.netlify/functions/huggingface' from origin 'https://akyyev.github.io' 
+  // has been blocked by CORS policy: Request header field access-control-allow-origin is not allowed by Access-Control-Allow-Headers in preflight response.
     if (event.httpMethod === "OPTIONS") {
     return {
       statusCode: 200,
       headers: {
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://akyyev.github.io, http://localhost:3000",
         "Access-Control-Allow-Headers": "Content-Type",
         "Access-Control-Allow-Methods": "POST, OPTIONS",
       },
@@ -36,7 +39,7 @@ export async function handler(event) {
     return {
       statusCode: 200,
       headers: {
-        "Access-Control-Allow-Origin": "*", 
+        "Access-Control-Allow-Origin": "https://akyyev.github.io, http://localhost:3000",
         "Access-Control-Allow-Headers": "Content-Type",
       },
       body: JSON.stringify(result)
@@ -45,7 +48,7 @@ export async function handler(event) {
     return {
       statusCode: 500,
       headers: {
-        "Access-Control-Allow-Origin": "*", 
+        "Access-Control-Allow-Origin": "https://akyyev.github.io, http://localhost:3000",
         "Access-Control-Allow-Headers": "Content-Type",
       },
       body: JSON.stringify({ error: err.message })
