@@ -1,0 +1,13 @@
+
+{
+  "name": "huggingface-backend",
+  "version": "1.0.0",
+  "type": "module",
+    "scripts": {
+    "start": "netlify dev"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "netlify-cli": "^15.0.0"
+  }
+}

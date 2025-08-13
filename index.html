@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Netlify + Hugging Face</title>
+</head>
+<body>
+  <h1>Hugging Face API via Netlify Function</h1>
+  <textarea id="inputText" rows="4" cols="50" placeholder="Enter your prompt here"></textarea><br />
+  <button id="submitBtn">Generate</button>
+
+  <h2>Response:</h2>
+  <pre id="response"></pre>
+
+  <script>
+    document.getElementById("submitBtn").addEventListener("click", async () => {
+      const inputText = document.getElementById("inputText").value;
+      const responseEl = document.getElementById("response");
+      responseEl.textContent = "Loading...";
+
+      try {
+        const res = await fetch(`/.netlify/functions/huggingface`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text: inputText }),
+        });
+        const data = await res.json();
+        responseEl.textContent = JSON.stringify(data, null, 2);
+      } catch (e) {
+        responseEl.textContent = `Error: ${e.message}`;
+      }
+    });
+  </script>
+</body>
+</html>
