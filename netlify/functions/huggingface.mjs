@@ -1,8 +1,21 @@
 import fetch from "node-fetch";
 
 export async function handler(event) {
+    if (event.httpMethod === "OPTIONS") {
+    return {
+      statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "POST, OPTIONS",
+      },
+      body: "",
+    };
+  }
+
   try {
     const HF_TOKEN = process.env.HF_TOKEN;
+
     const body = JSON.parse(event.body);
 
     const API_URL = "https://router.huggingface.co/v1/chat/completions";
