@@ -8,9 +8,9 @@ export async function handler(event) {
     return {
       statusCode: 200,
       headers: {
-        "Access-Control-Allow-Origin": "https://akyyev.github.io",
-        "Access-Control-Allow-Headers": "Content-Type",
-        "Access-Control-Allow-Methods": "POST, OPTIONS",
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
       },
       body: "",
     };
@@ -39,8 +39,9 @@ export async function handler(event) {
     return {
       statusCode: 200,
       headers: {
-        "Access-Control-Allow-Origin": "https://akyyev.github.io",
-        "Access-Control-Allow-Headers": "Content-Type",
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
       },
       body: JSON.stringify(result)
     };
@@ -48,8 +49,9 @@ export async function handler(event) {
     return {
       statusCode: 500,
       headers: {
-        "Access-Control-Allow-Origin": "https://akyyev.github.io",
-        "Access-Control-Allow-Headers": "Content-Type",
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
       },
       body: JSON.stringify({ error: err.message })
     };
