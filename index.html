@@ -21,8 +21,8 @@
       try {
         const res = await fetch(`/.netlify/functions/huggingface`, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(inputText),
+          headers: { "Content-Type": "*" },
+          body: inputText,
         });
         const data = await res.json();
         responseEl.textContent = JSON.stringify(data, null, 2);
